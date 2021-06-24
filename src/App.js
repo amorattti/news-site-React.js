@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        {routes.map(route => (
-          <Route {...route} />
+        {routes.map((route, index) => (
+          <Route key={index} {...route} />
         ))}
       </Switch>
     </Router>
