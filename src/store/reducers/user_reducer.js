@@ -1,8 +1,9 @@
+import { ADD_NEWSLETTER } from '../types';
 
 const user = (state = {}, action) => {
   switch(action.type) {
-    case 'test':
-      return;
+    case ADD_NEWSLETTER:
+      return { ...state, ...action.payload}
     default:
       return state;  
   }

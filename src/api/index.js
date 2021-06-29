@@ -13,6 +13,32 @@ export const getPosts = async(prevState, page=1, order="asc", limit="10") => {
       end: response.data.length === 0 ? true : false
     }
   } catch (error) {
-    return error;
+    throw error;
+  }
+}
+
+export const addNewsLetter = async(data) => {
+  try {
+    const findUser = await axios.get(`${URL}/newsletter?email=${data.email}`);
+
+    if(!Array.isArray(findUser.data) || !findUser.data.length) {
+      // add user
+      console.log(data)
+      const response = await axios.post(`${URL}/newsletter`, {...data});
+
+      return {
+        newsletter: 'added',
+        email: response.data
+      }
+      
+    } else {
+      // alreadu on the db
+      return {
+        newsletter: 'failed'
+      }
+    }
+
+  } catch (error) {
+    throw error;
   }
 }

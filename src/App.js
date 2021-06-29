@@ -7,7 +7,7 @@ import {
 import Header from './components/header.js';
 import MainLayout from './hoc/mainLayout.js';
 import { routes } from "./routes.js";
-
+console.log(routes)
 function App() {
   return (
     <Router>
