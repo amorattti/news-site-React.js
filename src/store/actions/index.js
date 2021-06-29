@@ -1,6 +1,6 @@
 import * as api from '../../api';
 
-import { ADD_NEWSLETTER, GET_ALL_POSTS } from '../types'
+import { ADD_NEWSLETTER, GET_ALL_POSTS, CLEAR_NEWSLETTER } from '../types'
 
 /*///////////////////////////
         POSTS
@@ -22,4 +22,11 @@ export const getAllPosts = (prevState, page, order, limit) => {
 export const addNewsLetter = (data) => ({
   type: ADD_NEWSLETTER,
   payload: api.addNewsLetter(data)
+});
+export const clearNewsLetter = () => ({
+  type: CLEAR_NEWSLETTER,
+  payload: {
+    newsletter: false,
+    email: []
+  }
 });

@@ -1,3 +1,4 @@
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 
 export const ADD_NEWSLETTER = 'ADD_NEWSLETTER';
+export const CLEAR_NEWSLETTER = 'CLEAR_NEWSLETTER';

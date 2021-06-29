@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
-import { addNewsLetter } from '../../store/actions';
+import { addNewsLetter, clearNewsLetter } from '../../store/actions';
 import showToast from './tools';
  
 const NewsLetter = () => {
@@ -20,12 +20,18 @@ const NewsLetter = () => {
       if (userData.newsletter === 'added') {
         showToast('SUCCESS', 'Thank you for subscribing!!!');
         textInput.current.value = "";
+        
       } else {
         showToast('ERROR', 'You are already on the db');
         textInput.current.value = "";
+        
       }
     }
   }, [userData])
+
+  useEffect(() => {
+    return () => dispatch(clearNewsLetter())
+  }, [dispatch])
 
   return (
     <div className="newsletter_container">
