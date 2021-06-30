@@ -48,8 +48,6 @@ export const getPostById = async (id) => {
     const response = await axios.get(`${URL}/posts/${id}`)
     return response.data;
   } catch (error) {
-    return {
-      error: '404'
-    }
+    return '404'
   }
 }
