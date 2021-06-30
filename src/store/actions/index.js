@@ -1,6 +1,6 @@
 import * as api from '../../api';
 
-import { ADD_NEWSLETTER, GET_ALL_POSTS, CLEAR_NEWSLETTER, GET_POST_BY_ID } from '../types'
+import { ADD_NEWSLETTER, GET_ALL_POSTS, CLEAR_NEWSLETTER, GET_POST_BY_ID, CLEAR_POST_ID } from '../types'
 
 /*///////////////////////////
         POSTS
@@ -18,6 +18,11 @@ export const getAllPosts = (prevState, page, order, limit) => {
 export const getPostById = (id) => ({
   type: GET_POST_BY_ID,
   payload: api.getPostById(id)
+});
+
+export const clearPostId = () => ({
+  type: CLEAR_POST_ID,
+  payload: {}
 });
 
 /*///////////////////////////
