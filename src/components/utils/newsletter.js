@@ -21,10 +21,9 @@ const NewsLetter = () => {
         showToast('SUCCESS', 'Thank you for subscribing!!!');
         textInput.current.value = "";
         
-      } else {
+      } else if (userData.newsletter === 'failed'){
         showToast('ERROR', 'You are already on the db');
-        textInput.current.value = "";
-        
+        textInput.current.value = ""; 
       }
     }
   }, [userData])

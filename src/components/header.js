@@ -8,7 +8,7 @@ const Header = () => {
     <>
       <Navbar >
         <LinkContainer to="/">
-           <Navbar.Brand> <img src={title} alt="The daily news" /></Navbar.Brand>
+           <Navbar.Brand> <img style={{width: '100%'}} src={title} alt="The daily news" /></Navbar.Brand>
         </LinkContainer>
       </Navbar >
       <Nav>
