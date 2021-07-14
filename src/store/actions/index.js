@@ -33,6 +33,7 @@ export const addNewsLetter = (data) => ({
   type: ADD_NEWSLETTER,
   payload: api.addNewsLetter(data)
 });
+
 export const clearNewsLetter = () => ({
   type: CLEAR_NEWSLETTER,
   payload: {
