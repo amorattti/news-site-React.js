@@ -2,8 +2,12 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Alert, Form, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux'
+import { sendMessage } from '../../store/actions';
+import showToast from '../utils/tools';
 
 const Contact = () => {
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -20,19 +24,26 @@ const Contact = () => {
         .max(20, 'Must be 20 characters or less')
         .required('Required'),
       message: Yup.string()
-        .min(200, 'Must be 200 characters or less')
+        .min(10, 'Must be 10 characters or less')
         .required('Required it'),
       email: Yup.string().email('Invalid email address').required('Required'),
     }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values)
+      dispatch(sendMessage(values)).then(({ payload }) => {
+        if(payload) {
+          showToast('SUCCESS', 'Message has been sent');
+          formik.resetForm();
+        } else {
+          showToast('ERROR', 'Something goes wrong');
+        }
+      });
     },
   });
 
   return (
     <Form onSubmit={formik.handleSubmit}>
       <h1>Contact us</h1>
+      
       <Form.Group>
         <Form.Label htmlFor="firstName">First Name</Form.Label>
         <Form.Control

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = 'http://localhost:3001';
 
-export const getPosts = async (prevState, page = 1, order = "asc", limit = "10") => {
+export const getPostsApi = async (prevState, page = 1, order = "asc", limit = "10") => {
 
   try {
     const response = await axios.get(`${URL}/posts?_page=${page}&_limit=${limit}&_order=${order}&_sort=id`);
@@ -17,7 +17,7 @@ export const getPosts = async (prevState, page = 1, order = "asc", limit = "10")
   }
 }
 
-export const addNewsLetter = async (data) => {
+export const addNewsLetterApi = async (data) => {
   try {
     const findUser = await axios.get(`${URL}/newsletter?email=${data.email}`);
 
@@ -43,11 +43,20 @@ export const addNewsLetter = async (data) => {
   }
 }
 
-export const getPostById = async (id) => {
+export const getPostByIdApi = async (id) => {
   try {
     const response = await axios.get(`${URL}/posts/${id}`)
     return response.data;
   } catch (error) {
     return '404'
+  }
+}
+
+export const sendMessageApi = async (data) => {
+  try {
+    await axios.post(`${URL}/contact`, { ...data });
+    return true
+  } catch (error) {
+    return false
   }
 }
